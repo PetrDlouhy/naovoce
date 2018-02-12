@@ -68,10 +68,10 @@ class FruitForm(forms.ModelForm):
         for kind in Kind.objects.all():
             cls_name = Kind.CLS.text_of(kind.cls)
             groups.setdefault(cls_name, [])
-            groups[cls_name].append((kind.pk, kind.name, kind.key))
+            groups[cls_name].append((kind.pk, kind.name))
         self.fields['kind'].choices = [
-            ('', _('Nothing selected'), 'F00D')
-        ] + [(cls, kind, '') for cls, kind in groups.items()]
+            ('', _('Nothing selected'))
+        ] + [(cls, kind) for cls, kind in groups.items()]
 
     class Meta:
         model = Fruit
