@@ -2,7 +2,10 @@ from functools import wraps
 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0
+    from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import ugettext, ugettext_lazy as _

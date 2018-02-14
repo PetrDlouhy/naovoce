@@ -1,7 +1,10 @@
 from decimal import Decimal
 
 from django.contrib.gis.geos import Point
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0
+    from django.core.urlresolvers import reverse
 from django.db import transaction
 
 from rest_framework.test import APITestCase

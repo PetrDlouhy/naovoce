@@ -3,7 +3,10 @@ import os
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0
+    from django.core.urlresolvers import reverse
 from django.db import transaction
 from rest_framework import status
 
