@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/$', user.views.accounts_profile),
     url(r'^robots\.txt$', utils.views.plain_text_view, dict(template_name='robots.txt'), name='robots'),
+    url(r'^webmap/', include('webmap.urls')),
     url(r'^map/$', naovoce.views.map_view, name='map'),
 ]
 

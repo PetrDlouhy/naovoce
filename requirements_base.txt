@@ -7,6 +7,7 @@ django-ipware>=1.1
 django-leaflet
 django-modeltranslation>=0.10
 django-recaptcha>=1.2.1
+django-webmap-corpus
 djangorestframework>=3.3
 djangorestframework-gis
 django-cors-headers>=2.0.2

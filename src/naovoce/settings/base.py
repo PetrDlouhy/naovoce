@@ -187,6 +187,7 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'author.middlewares.AuthorDefaultBackendMiddleware',
     'utils.i18n.middleware.ForceDefaultLanguageMiddleware',
 )
 
@@ -228,6 +229,16 @@ EXTERNAL_APPS = (
     'rest_framework',
     'rest_framework_gis',
     'rest_framework.authtoken',
+
+    'author',
+    'colorful',
+    'adminsortable2',
+    'constance.backends.database',
+    'constance',
+    'import_export',
+    'webmap',
+    'easy_thumbnails',
+    'djgeojson',
 )
 
 ADMIN_APPS = (
@@ -321,3 +332,12 @@ NEWSLETTER_BRAND_ID = 1             # must be set in instance-specific settings/
 NEWSLETTER_DEFAULT_LIST_ID = None   # must be set in instance-specific settings/local.py
 NEWSLETTER_DEFAULT_FROM_EMAIL = 'newsletter@na-ovoce.cz'
 NEWSLETTER_DEFAULT_FROM_NAME = 'Na ovoce newsletter'
+
+CONSTANCE_APP_NAME = "webmap"
+CONSTANCE_CONFIG = {
+        'MAP_BASELON': (14.4211, u'zeměpisná délka základní polohy mapy'),
+        'MAP_BASELAT': (50.08741, u'zeměpisná délka základní polohy mapy'),
+        'MAP_BOUNDS': ("14.22, 49.95, 14.8, 50.18", u'hranice zobrazení mapy'),
+        'DEFAULT_STATUS_ID': (2, u'id defaultního statusu'),
+}
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
