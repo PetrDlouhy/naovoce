@@ -1,7 +1,10 @@
-from django.conf.urls import include, url
+try:
+    from django.urls import include
+except ImportError:
+    from django.conf.urls import include
+from django.conf.urls import url
 
 from .views import api_root, api_handler_404
-
 
 urlpatterns = [
     url(r'^$', api_root, name='root'),

@@ -4,7 +4,10 @@ from uuid import uuid4
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.postgres.fields import HStoreField
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:  # Django < 2.0
+    from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 from django.utils.formats import date_format
@@ -184,6 +187,7 @@ class Message(TimeStampedModel):
         FruitUser,
         verbose_name=_('recipient'),
         related_name='messages',
+        on_delete=models.CASCADE,
     )
 
     @property
