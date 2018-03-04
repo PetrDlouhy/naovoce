@@ -99,6 +99,8 @@
 
 			{# Add more content to popups when marker clicked. #}
 			@.on 'popupopen', (ev) ->
+				if not ev.popup._source.fruit?
+					return
 				$.getJSON ev.popup._source.fruit.url, (json) =>
 					content = "<p><strong>{% trans 'Shared by' %}:</strong> " +
 						"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
